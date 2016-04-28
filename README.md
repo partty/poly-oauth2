@@ -55,16 +55,33 @@ Asyncronusly performs a refresh request to the oAuth2 server.
 
 ## Events
 
-### refreshComplete
-### refreshComplete
 
-### refreshComplete
+### beforeAuthorize
+This event fires befor the request to be sent. It's a way to change the request befor sending it to the server.
 
-### refreshComplete
+### authorizeSuccess
+This event fires on successful authorization. Use this for notifying the user that the authentication is successful
+
+### authorizeError
+This event is fired on errorous authentication. If the server returns a status code 4xx on wrong username or password (as it should) this event is fired when the password is wrong, but it also fired on 404 or other network or origin problems. Make sure you handle all of them apropriatly.
+
+### authorizeComplete
+This event is fired, no mather if there is an error or success. Use this to hide any spiners an loading screens
+
 
 ### refreshSuccess
+This event is fired when the refresh ave been successful
+
+### refreshFail
+This event is fired on any error with the refresh request. Analogus with the authorize, this even will fire for any kind of status different from 200.
+
+### refreshComplete
+This is fired after every refresh request, no mather if it is a success or an error
+
 
 ### tokenChange
+This event is fired everytime the access token is changed. In this sense the event is fired after successful authorization and after every successful refresh.
+Use this event to handle access token changes. The simpler way to handle token changes is to use the accessToken property, wich is aways up to date. 
 
 
 
